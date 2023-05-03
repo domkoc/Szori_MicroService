@@ -1,0 +1,41 @@
+version: '3'
+services:
+  hm-backend:
+    container_name: hm-backend
+    build:
+      context: HelloWorldBackend
+    image: hellomicro.backend:latest
+    ports:
+      - 5000:80
+      - 5001:443
+    environment:
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=5001
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=mypassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/hm-backend.pfx
+    networks:
+      - hello-micro-network
+    volumes:
+      - ./HelloWorldBackend/certs:/https/
+
+  hm-frontend:
+    container_name: hm-frontend
+    build:
+      context: HelloWorldFrontend
+    image: hellomicro.frontend:latest
+    ports:
+      - 5100:80
+      - 5101:443
+    environment:
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=5101
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=mypassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/hm-frontend.pfx
+    networks:
+      - hello-micro-network
+    volumes:
+      - ./HelloWorldFrontend/certs:/https/:ro
+      
+networks:
+  hello-micro-network:
+    driver: bridge

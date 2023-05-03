@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieE_FIBRPN", "MovieE_FIBRPN.csproj", "{E1DFFE14-D3F8-4954-87A7-BA5C8E913876}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1DFFE14-D3F8-4954-87A7-BA5C8E913876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1DFFE14-D3F8-4954-87A7-BA5C8E913876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1DFFE14-D3F8-4954-87A7-BA5C8E913876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1DFFE14-D3F8-4954-87A7-BA5C8E913876}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7DB08BA4-33E1-4AF6-BED7-EE45A1FC0F49}
+	EndGlobalSection
+EndGlobal

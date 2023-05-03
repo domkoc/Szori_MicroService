@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "HelloWorldMicroService";
+
+import "google/api/annotations.proto";
+
+package HelloWorldMicroService;
+
+service Hello {
+	rpc SayHello (SayHelloRequest) returns (SayHelloReply) {
+		option (google.api.http) = {
+			post: "/api/hello",
+			body: "*"
+		};
+	}
+}
+
+message SayHelloRequest {
+string name = 1;
+}
+
+message SayHelloReply {
+string message = 1;
+}

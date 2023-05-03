@@ -1,0 +1,60 @@
+version: '3'
+services:
+  movie-pi-FIBRPN:
+    container_name: movie-pi-FIBRPN
+    build:
+      context: MoviePi_FIBRPN
+    image: movie.pi:latest
+    ports:
+      - 5100:80
+      - 5101:443
+    environment:
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=5101
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=mypassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/movie-pi-FIBRPN.pfx
+    networks:
+      - movie-fibrpn-network
+    volumes:
+      - ./MoviePi_FIBRPN/certs:/https/
+
+  movie-e-FIBRPN:
+    container_name: movie-e-FIBRPN
+    build:
+      context: MovieE_FIBRPN
+    image: movie.e:latest
+    ports:
+      - 5200:80
+      - 5201:443
+    environment:
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=5201
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=mypassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/movie-e-FIBRPN.pfx
+    networks:
+      - movie-fibrpn-network
+    volumes:
+      - ./MovieE_FIBRPN/certs:/https/:ro
+      
+    
+  movie-stream-FIBRPN:
+    container_name: movie-stream-FIBRPN
+    build:
+      context: MovieStream_FIBRPN
+    image: movie.stream:latest
+    ports:
+      - 5000:80
+      - 5001:443
+    environment:
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=5001
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=mypassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/movie-stream-FIBRPN.pfx
+    networks:
+      - movie-fibrpn-network
+    volumes:
+      - ./MovieStream_FIBRPN/certs:/https/:ro
+
+networks:
+  movie-fibrpn-network:
+    driver: bridge
