@@ -5,7 +5,7 @@ using Streaming;
 var httpHandler = new HttpClientHandler();
 httpHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 
-var channel = GrpcChannel.ForAddress("https://localhost:5001", new GrpcChannelOptions { HttpHandler = httpHandler });
+var channel = GrpcChannel.ForAddress("https://localhost:5000", new GrpcChannelOptions { HttpHandler = httpHandler });
 
 var client = new MovieStream.MovieStreamClient(channel);
 

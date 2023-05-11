@@ -43,11 +43,11 @@ services:
       context: MovieStream_FIBRPN
     image: movie.stream:latest
     ports:
-      - 5000:80
-      - 5001:443
+      - 5001:80
+      - 5000:443
     environment:
       - ASPNETCORE_URLS=https://+;http://+
-      - ASPNETCORE_HTTPS_PORT=5001
+      - ASPNETCORE_HTTPS_PORT=5000
       - ASPNETCORE_Kestrel__Certificates__Default__Password=mypassword
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/movie-stream-FIBRPN.pfx
     networks:
